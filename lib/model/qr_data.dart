@@ -1,6 +1,8 @@
 class QrData {
   final String bankBin;
+  final String bankName;
   final String accountNumber;
+  final String accountName;
   final double amount;
   final String note;
   final bool isOneTime;
@@ -9,7 +11,9 @@ class QrData {
 
   QrData({
     required this.bankBin,
+    required this.bankName,
     required this.accountNumber,
+    required this.accountName,
     required this.amount,
     required this.note,
     this.isOneTime = false,

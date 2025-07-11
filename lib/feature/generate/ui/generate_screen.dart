@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:myqr/constant/bank_constant.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
-
 import 'generate_provider.dart';
 
 class GenerateScreen extends ConsumerStatefulWidget {

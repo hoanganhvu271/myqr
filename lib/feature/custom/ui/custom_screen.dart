@@ -2,24 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'dart:io';
+import '../../../model/qr_custom.dart';
 import '../../../model/qr_data.dart';
-
-// Dependency: pretty_qr_code: ^3.0.0
+import '../../generate/ui/generate_screen.dart';
 
 class CustomScreen extends StatefulWidget {
-  final bool isSmooth;
-  final bool isCircle;
-  final Color color;
-  final bool hasCenterImage;
+  final QrCustom qrCustom;
   final XFile? imageFile;
   final QrData qrData;
 
   const CustomScreen({
     super.key,
-    this.isSmooth = false,
-    this.isCircle = false,
-    this.color = Colors.black,
-    this.hasCenterImage = false,
+    required this.qrCustom,
     this.imageFile,
     required this.qrData,
   });
@@ -40,11 +34,15 @@ class _CustomScreenState extends State<CustomScreen> {
   @override
   void initState() {
     super.initState();
-    _isSmooth = widget.isSmooth;
-    _isCircle = widget.isCircle;
-    _color = widget.color;
-    _hasCenterImage = widget.hasCenterImage;
+    _isSmooth = widget.qrCustom.isSmooth;
+    _isCircle = widget.qrCustom.isCircle;
+    _color = widget.qrCustom.color;
+    _hasCenterImage = widget.qrCustom.hasCenterImage;
     _imageFile = widget.imageFile;
+
+    if (widget.qrCustom.centerImagePath.isNotEmpty) {
+      _imageFile = XFile(widget.qrCustom.centerImagePath);
+    }
   }
 
   @override
@@ -194,6 +192,17 @@ class _CustomScreenState extends State<CustomScreen> {
               ),
             ),
           ],
+          SizedBox(height: 20),
+          // Save Button
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => GenerateScreen())
+              );
+            },
+            child: const Text('Generate QR'),
+          ),
         ],
       ),
     );

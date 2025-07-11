@@ -41,6 +41,9 @@ dependencies:
   cached_network_image: ^3.4.1
   pretty_qr_code: ^3.4.0
   image_picker: ^1.1.2
+  mobile_scanner: ^7.0.1
+  google_mlkit_barcode_scanning: ^0.14.1
+  permission_handler: ^12.0.1
 
 dev_dependencies:
   flutter_test:
