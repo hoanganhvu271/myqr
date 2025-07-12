@@ -1,7 +1,7 @@
+import 'package:myqr/constant/bank_constant.dart';
 import 'package:myqr/core/vietqr/vietqr_data.dart';
 
 class VietQRParser {
-  /// Phân tích chuỗi VietQR thành các thành phần
   static VietQRData? parse(String qrString) {
     try {
       final data = <String, String>{};
@@ -164,25 +164,7 @@ class VietQRParser {
   }
 
   static String _getBankName(String bankBIN) {
-    const bankMap = {
-      '970415': 'Vietinbank',
-      '970436': 'Vietcombank',
-      '970418': 'BIDV',
-      '970405': 'Agribank',
-      '970422': 'MB Bank',
-      '970407': 'Techcombank',
-      '970443': 'SHB',
-      '970431': 'Eximbank',
-      '970441': 'VIB',
-      '970448': 'OCB',
-      '970429': 'SCB',
-      '970454': 'VietCapital Bank',
-      '970410': 'SacomBank',
-      '970439': 'Public Bank',
-      '970434': 'VietBank',
-    };
-
-    return bankMap[bankBIN] ?? 'Unknown Bank';
+    return BanksConstant.getBankByBIN(bankBIN)?.name ?? 'Unknown Bank';
   }
 
   static String _getCurrencyFromCode(String code) {
